@@ -1,8 +1,10 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+export const config = {
+  //cloud_name: 'dlopjt9le',
+  //cloud_name: 'club-hozo',
+  //upload_preset: 'gs95u3um',
 
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  cloud_name: 'membroz',
+  upload_preset: 'egi2wepr'
 };
+
+export default config;
