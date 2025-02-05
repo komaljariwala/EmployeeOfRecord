@@ -1,16 +1,16 @@
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstName">
-    <mat-error *ngIf="registrationForm.get('firstName')?.hasError('required')">
+    <input matInput formControlName="firstname">
+    <mat-error *ngIf="registrationForm.get('firstname')?.hasError('required')">
       First Name is required
     </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastName">
-    <mat-error *ngIf="registrationForm.get('lastName')?.hasError('required')">
+    <input matInput formControlName="lastname">
+    <mat-error *ngIf="registrationForm.get('lastname')?.hasError('required')">
       Last Name is required
     </mat-error>
   </mat-form-field>
@@ -35,5 +35,5 @@
    
   </mat-form-field>
 
-  <button type="submit" mat-raised-button color="primary">Register</button>
+  <button type="submit">Register</button>
 </form>

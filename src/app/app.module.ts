@@ -4,27 +4,35 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { AppRoutes } from './app.routing';
+import { EmployeeService } from './services/employee.service';
+import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    RegistrationComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forRoot(AppRoutes, {
         // useHash: true
     }),
     RegistrationModule
-    // ...existing code...
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
