@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environments';
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-  private apiUrl = 'http://localhost:3000/employees';
+  private apiUrl = environment.apiUrl; 
 
   constructor(private http: HttpClient) {}
 
@@ -31,4 +31,15 @@ export class EmployeeService {
   deleteEmployee(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  register(employee: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, employee);
+  }
+
+  login(email: string, password: string): Observable<any> {
+    console.log('email =>', email);
+    console.log('password =>', password);
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
+  }
+  
 }

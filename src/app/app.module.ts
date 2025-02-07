@@ -12,6 +12,8 @@ import { AppRoutes } from './app.routing';
 import { EmployeeService } from './services/employee.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [

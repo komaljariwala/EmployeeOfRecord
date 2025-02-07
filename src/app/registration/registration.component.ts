@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
     console.log('Form valid:', this.registrationForm.valid);
     if (this.registrationForm.valid) {
       console.log('Form is valid, calling saveEmployee');
-       this.employeeService.addEmployee(this.registrationForm.value).subscribe(() => {
+       this.employeeService.register(this.registrationForm.value).subscribe(() => {
         console.log('Employee added successfully');
         alert('Employee added successfully');
     });

@@ -1,20 +1,24 @@
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./server/config/db");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
 
-// ✅ Fix: Middleware for JSON Parsing
+// ✅ Middleware
 app.use(cors());
-app.use(express.json()); // This is important to read JSON body correctly
+app.use(express.json()); // Make sure this middleware is included
 
-// Connect to MongoDB
-connectDB();
+// ✅ MongoDB Connection
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/employeesdb";
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((error) => console.error("❌ MongoDB Connection Error:", error));
 
-// Routes
+// ✅ Import Routes
 const employeeRoutes = require("./server/route/employee.route");
-app.use("/employees", employeeRoutes);
+app.use("/employees", employeeRoutes); // Ensure this is correct!
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

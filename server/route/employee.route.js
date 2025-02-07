@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const employeeController = require("../controller/employee.controller");
+const { createEmployee, loginEmployee } = require("../controller/employee.controller");
 
-router.post("/", employeeController.createEmployee);
-router.get("/", employeeController.getEmployees);
-router.get("/:id", employeeController.getEmployeeById);
-router.put("/:id", employeeController.updateEmployee);
-router.delete("/:id", employeeController.deleteEmployee);
+// ✅ Employee Registration Route
+router.post("/register", createEmployee);
+
+// ✅ Employee Login Route
+router.post("/login", loginEmployee); // This route must exist
 
 module.exports = router;
