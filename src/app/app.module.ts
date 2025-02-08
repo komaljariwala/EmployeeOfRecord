@@ -1,40 +1,41 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { NgModule, Injector } from '@angular/core';
+import { BrowserModule} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { AppComponent } from './app.component';
+
+
 import { AppRoutes } from './app.routing';
-import { EmployeeService } from './services/employee.service';
-import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationModule } from './registration/registration.module';
-import { LoginComponent } from './login/login.component';
-import { LoginModule } from './login/login.module';
+
+import { PagesModule } from './pages/pages.module';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RegistrationComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    RouterModule.forRoot(AppRoutes, {
-        // useHash: true
-    }),
-    RegistrationModule
-  ],
-  providers: [EmployeeService],
-  bootstrap: [AppComponent]
+    imports: [
+      CommonModule,
+      BrowserModule,
+      BrowserAnimationsModule,
+      FormsModule,
+      RouterModule.forRoot(AppRoutes,{
+      //   useHash: true
+      }),
+      HttpClientModule,
+      PagesModule,
+
+    ],
+    declarations: [
+      AppComponent,
+    ],
+    providers : [
+    ],
+    bootstrap:    [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(injector:Injector){
+    }
+}
