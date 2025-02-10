@@ -1,9 +1,9 @@
 <div class="sidebar">
   <ul>
-    <li><a routerLink="/home">Dashboard</a></li>
-    <li><a routerLink="/services">Staff</a></li>
-    <li><a routerLink="/about">Leave</a></li>
-    <li><a routerLink="/contact">Attendance</a></li>
-    <li><a routerLink="/profile">Payroll</a></li>
+    <li><a [routerLink]="['/pages/dashboard']" routerLinkActive="active">Dashboard</a></li>
+    <li><a [routerLink]="['/pages/staff']" routerLinkActive="active">Staff</a></li>
+    <li><a [routerLink]="['/pages/leave']">Leave</a></li>
+    <li><a [routerLink]="['/pages/attendance']">Attendance</a></li>
+    <li><a [routerLink]="['/pages/payroll']">Payroll</a></li>
   </ul>
 </div>

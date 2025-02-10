@@ -23,6 +23,26 @@ export const PagesRoutes: Routes = [
                 path: 'dashboard',
                 loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
                 // canActivate: [AuthGuard]
+            },
+            {
+                path: 'staff',
+                loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule),
+                // canActivate: [AuthGuard]
+            },
+            {
+                path: 'leave',
+                loadChildren: () => import('./leave/leave.module').then(m => m.LeaveModule),
+                // canActivate: [AuthGuard]
+            },
+            {
+                path: 'attendance',
+                loadChildren: () => import('./attendance-module/attendance-module.module').then(m => m.AttendanceModule),
+                // canActivate: [AuthGuard]
+            },
+            {
+                path: 'payroll',
+                loadChildren: () => import('./payroll-module/payroll-module.module').then(m => m.PayrollModule),
+                // canActivate: [AuthGuard]
             }
         ]
     }
