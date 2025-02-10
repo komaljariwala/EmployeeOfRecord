@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegistrationComponent } from './registration/registration.component';
+import { SidebarModule } from '../sidebar/sidebar.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { RegistrationComponent } from './registration/registration.component';
     ReactiveFormsModule,
     AppMaterialModule,
     // MatLabelModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    SidebarModule
 
   ],
   declarations: [
