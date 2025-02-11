@@ -28,7 +28,7 @@ export class LoginComponent {
         success => {
           console.log('success =>', success);
           if (success) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['pages/dashboard']);
           } else {
             alert('Login failed: Invalid username or password');
           }

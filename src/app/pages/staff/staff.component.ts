@@ -1,19 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-staff',
-  templateUrl: './staff.component.html'
+  templateUrl: './staff.component.html',
+  styleUrls: ['./staff.component.css']
 })
 export class StaffComponent implements OnInit {
-  staffList = [
-    { name: 'John Doe' },
-    { name: 'Jane Smith' },
-    { name: 'Michael Johnson' }
-  ];
+  
+  staffForm: FormGroup;
+  designations: string[] = ['Manager', 'Developer', 'Designer', 'Tester', 'HR'];
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private employeeService: EmployeeService) { 
+    this.staffForm = this.fb.group({
+      fullname: new FormControl(''),
+      designation: new FormControl(''),
+      phonenumber: new FormControl(''),
+      email: new FormControl(''),
+      dateofbirth: new FormControl(''),
+      joiningdate: new FormControl('')
+    });
+  }
 
   ngOnInit(): void {
-    // Initialization logic here
+    
+  }
+
+  onSubmit(){   
+    console.log('this.staffForm.value =>', this.staffForm.value);
+    if (this.staffForm.valid) {
+      console.log('Form is valid, calling saveEmployee');
+       this.employeeService.addEmployee(this.staffForm.value).subscribe(() => {
+        console.log('Employee added successfully');
+        alert('Employee added successfully');
+    });
+    } else {
+      console.log('Form is invalid');
+      alert('Please fill out the form correctly.');
+    }
   }
 }

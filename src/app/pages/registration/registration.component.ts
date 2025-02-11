@@ -13,8 +13,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private employeeService: EmployeeService) {
     this.registrationForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      fullname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });

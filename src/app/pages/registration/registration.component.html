@@ -1,17 +1,9 @@
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <mat-label>First Name</mat-label>
-    <input matInput formControlName="firstname">
-    <mat-error *ngIf="registrationForm.get('firstname')?.hasError('required')">
-      First Name is required
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Last Name</mat-label>
-    <input matInput formControlName="lastname">
-    <mat-error *ngIf="registrationForm.get('lastname')?.hasError('required')">
-      Last Name is required
+    <mat-label>Full Name</mat-label>
+    <input matInput formControlName="fullname">
+    <mat-error *ngIf="registrationForm.get('fullname')?.hasError('required')">
+      Full Name is required
     </mat-error>
   </mat-form-field>
 

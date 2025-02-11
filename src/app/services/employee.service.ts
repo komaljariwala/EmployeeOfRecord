@@ -13,7 +13,7 @@ export class EmployeeService {
   addEmployee(employee: any): Observable<any> {
     console.log("Sending Data:", employee); // Debugging step
     console.log('this.http.post(this.apiUrl, employee) =>', this.http.post(this.apiUrl, employee));
-    return this.http.post(this.apiUrl, employee);
+    return this.http.post(`${this.apiUrl}/add`, employee);
   }
 
   getEmployees(): Observable<any[]> {
@@ -33,6 +33,8 @@ export class EmployeeService {
   }
 
   register(employee: any): Observable<any> {
+    console.log('employee =>', employee);
+    console.log('this.apiUrl =>', this.apiUrl);
     return this.http.post(`${this.apiUrl}/register`, employee);
   }
 
