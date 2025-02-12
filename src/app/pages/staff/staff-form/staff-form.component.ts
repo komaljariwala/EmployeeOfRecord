@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { EmployeeService } from '../../services/employee.service';
+import { EmployeeService } from '../../../services/employee.service';
 
 @Component({
   selector: 'app-staff',
-  templateUrl: './staff.component.html'
+  templateUrl: './staff-form.component.html',
+  styleUrls: ['./staff-form.component.css']
 })
-export class StaffComponent implements OnInit {
+export class StaffFormComponent implements OnInit {
   
   staffForm: FormGroup;
   designations: string[] = ['Manager', 'Developer', 'Designer', 'Tester', 'HR'];

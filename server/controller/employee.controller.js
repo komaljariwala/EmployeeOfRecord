@@ -31,7 +31,6 @@ exports.addEmployee = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password || 'pass#123', 10);
     req.body.password = hashedPassword;
-    console.log('req.body =>', req.body);
     const newEmployee = new Employee(req.body);
     const savedEmployee = await newEmployee.save();
     res.status(201).json(savedEmployee);
@@ -40,14 +39,21 @@ exports.addEmployee = async (req, res) => {
   }
 };
 
+
+exports.getEmployee = async (req, res) => {
+  try {
+    const employees = await Employee.find();
+    res.status(200).json(employees);
+  } catch (error) {
+    res.status(500).json({ message: "Error getting employees", error });
+  }
+};
+
 exports.loginEmployee = async (req, res) => {
   const { email, password } = req.body;
-  console.log('email =>', email);
-  console.log('password =>', password);
   try {
     // ✅ Find employee by email
     const employee = await Employee.findOne({ email });
-    console.log('employee =>', employee);
     if (!employee) {
       return res.status(404).json({ message: "User not found" });
     }

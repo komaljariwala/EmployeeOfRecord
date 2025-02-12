@@ -1,0 +1,25 @@
+<div class="staff-list">
+  <h2>Staff List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Designation</th>
+        <th>Phone Number</th>
+        <th>Date of Birth</th>
+        <th>Joining Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of staffList">
+        <td>{{ staff.fullname }}</td>
+        <td>{{ staff.email }}</td>
+        <td>{{ staff.designation }}</td>
+        <td>{{ staff.phonenumber }}</td>
+        <td>{{ staff.dateofbirth}}</td>
+        <td>{{ staff.joiningdate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

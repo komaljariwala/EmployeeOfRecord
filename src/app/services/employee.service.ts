@@ -11,13 +11,11 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   addEmployee(employee: any): Observable<any> {
-    console.log("Sending Data:", employee); // Debugging step
-    console.log('this.http.post(this.apiUrl, employee) =>', this.http.post(this.apiUrl, employee));
     return this.http.post(`${this.apiUrl}/add`, employee);
   }
 
   getEmployees(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(`${this.apiUrl}/all`);
   }
 
   getEmployeeById(id: string): Observable<any> {
@@ -33,14 +31,10 @@ export class EmployeeService {
   }
 
   register(employee: any): Observable<any> {
-    console.log('employee =>', employee);
-    console.log('this.apiUrl =>', this.apiUrl);
     return this.http.post(`${this.apiUrl}/register`, employee);
   }
 
   login(email: string, password: string): Observable<any> {
-    console.log('email =>', email);
-    console.log('password =>', password);
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
   }
   
