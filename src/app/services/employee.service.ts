@@ -23,11 +23,12 @@ export class EmployeeService {
   }
 
   updateEmployee(id: string, employee: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, employee);
+    console.log('${this.apiUrl}/update/${id} =>', this.apiUrl +'/update/' + id);
+    return this.http.put(`${this.apiUrl}/update/${id}`, employee);
   }
 
   deleteEmployee(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
 
   register(employee: any): Observable<any> {

@@ -17,6 +17,19 @@ exports.createEmployee = async (req, res) => {
   }
 };
 
+exports.getEmployeeByID = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const employee = await Employee.findById(id);
+    if (!employee) {
+      return res.status(404).json({ message: "Employee not found" });
+    }
+    res.status(200).json(employee);
+  } catch (error) {
+    res.status(500).json({ message: "Error getting employee", error });
+  }
+};
+
 exports.addEmployee = async (req, res) => {
   try {
     const { fullname, designation, email, dateofbirth, joiningdate, password } = req.body;
@@ -69,5 +82,39 @@ exports.loginEmployee = async (req, res) => {
     res.status(200).json({ message: "Login successful", employee });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error });
+  }
+};
+
+exports.updateEmployeeByID = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+    console.log('id =>', id);
+    console.log('updates =>', updates);
+    const updatedEmployee = await Employee.findByIdAndUpdate(id, updates, { new: true });
+
+    if (!updatedEmployee) {
+      return res.status(404).json({ message: "Employee not found" });
+    }
+
+    res.status(200).json(updatedEmployee);
+  } catch (error) {
+    res.status(500).json({ message: "Error updating employee", error });
+  }
+};
+
+// Delete employee by ID
+exports.deleteEmployee = async (req, res) => {
+  try {
+    const employeeId = req.params.id;
+    const deletedEmployee = await Employee.findByIdAndDelete(employeeId);
+
+    if (!deletedEmployee) {
+      return res.status(404).json({ message: 'Employee not found' });
+    }
+
+    res.json({ message: 'Employee deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting employee', error });
   }
 };

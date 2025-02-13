@@ -21,6 +21,6 @@
       <label for="joiningdate">Joining Date:</label>
       <input type="date" id="joiningdate" formControlName="joiningdate" required>
   
-      <button type="submit">Add Staff</button>
+      <button type="submit">{{ bindId ? 'Edit Staff' : 'Add Staff' }}</button>
     </form>
   </div>n
